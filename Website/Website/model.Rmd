@@ -1,0 +1,32 @@
+---
+title: "Model and Data"
+---
+
+#Data
+
+Data for this project came from www.basketball-reference.com, a great resource for anyone interested in working with NBA data. Specifically, I pulled information from two tables: Season Advanced Stats and MVP Voting. For each of the past ten completed seasons (2007-08 through 2016-17), I recorded information on the same set of variables for every player that received an MVP vote as reported by the MVP Voting table.
+
+
+#Variables
+
+#####Dependent Variable
+
+Share of Possible Vote-Points (Share): Voters for the MVP submit a ballot of five players in ranked order. So each player receiving votes will receive X number of first place votes, X number of second place votes, and so on. The ranks are weighted and therefore the maximum amount of vote-points a player can receive is if they were unanimously ranked as the number one candidate by all voters (as was the case with Stephen Curry in 2016). The share of possible vote-points for each player receiving an MVP vote is the ratio of the amount of vote-points they received to this maximum. Since the number of voters, and therefore the number of possible vote-points, changes, I used the share of possible votes in order to pull data across several years.
+
+#####Independent Variables
+
+Games Played (G): A simple counting statistic to track the amount of games played by a player in a given year. For the players in our sample who are all very good, missed games are due to either injury or (sometimes) rest. It is included because more weight is generally given to players who play the bulk of the season. The candidacy of players who sit out for long stretches due injury is generally discounted. Though there seems to be a consensus that James Harden is the MVP this year anyway, Stephen Curry and Joel Embiid likely would not have a chance anyway due to the substantial number of games missed by both.
+
+Player Efficiency Rating (PER): Developed by John Hollinger, a former NBA analyst at ESPN and current VP of Basketball Operations for the Memphis Grizzlies, it is meant to encompass all of a player's contributions while on the floor in one rating. It is standardized with and average of 15 and adjusted for pace so that it is more conducive for year-to-year comparisons of player performance. As such, a PER above 15 indicates that a player is performing better than league average.
+
+Points Per Game (PTS): Another simple counting statistic. It tracks the average number of points scored by a player in each game. The MVP is typically viewed as an offensive award meaning that offensive prowess is generally favored over defensive impact. Scoring is generally the most visible evidence of a player's offensive skill so I would expect voters to be sensitive to this metric.
+
+Usage Percentage (USG): An estimate of the team's plays used by a player while he was on the floor. Most MVP candidates are the focal point of their team's offense and, as such, their usage percentages tend to be quite high.
+
+Win Shares (WS): A metric designed to estimate the number of wins contributed by a player. In essence, it attempts to capture the individual's contribution to the team's success. Orginally developed by Bill James for baseball, it has been adapated and applied to basketball.
+
+Value Over Replacement Player (VORP): As defined by basketball-reference it is, "a box score estimate of the points per 100 TEAM possessions that aplayer contributed above a replacement-level (-2.0) player, translated to an average team and prorated to an 82-game season." It is calculated from another statistic, Box Score Plus/Minus, in order to measure a player's overall contrbution to the team relative to what a theoretical "replacement level" player would produce.
+
+#Hypotheses
+
+I predict that each of the independent variables will have a statistically significant and positive effect on the dependent variable.

@@ -1,0 +1,11 @@
+---
+title: "Overview"
+---
+
+by AJ Goetz
+
+As a fan of the NBA, I pay attention to the annual end-of-season awards. Most fascinating of all is the league's Most Valuable Player award given each year to the player who...well, that's the thing. The "most valuable" distinction is inherently subjective so to each of the voters it can mean something very different. Some argue for the simple heuristic of voting for the best player on the league's best team. Others make the argument that the most valuable player is the one who makes the most difference to his team--that if you removed that player from the team, his team would become substantially worse off. The latter argument acknowledges the good players toiling away on bad teams. My personal favorite is what I call the "Space Jam" argument: if aliens landed on earth and challenged mankind to a game of basketball to decide the fate of our world, who would be the first pick?
+
+The point is, there is no clear criteria to guide voters' decisions. The choice is theirs to make in any way they see fit. But, I wondered if, like the heuristic mentioned above, voters were relying heavily on certain performance metrics to guide their choice. If so, a model might be constructed to predict the winner of the annual award. So that is what I have attempted to do. I constructed a linear regression model against a player's share of the mvp vote. 
+
+In the other sections of this site, you can find information on the source of my data, the variables I used, and the results of the regression. Additionally, I will test my model against data from this past regular season, which just concluded. The MVP has not yet been announced, but there seems to be a consensus that the winner will be James Harden of the Houston Rockets. If my model is a good predictor of the award's winner, the vote share computed for Harden from plugging this year's statistics into my model should exceed that of the other candidates.

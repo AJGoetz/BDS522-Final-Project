@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>This Year’s Race</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">NBA MVP Voting</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Overview</a>
+</li>
+<li>
+  <a href="model.html">Model and Data</a>
+</li>
+<li>
+  <a href="results.html">Results and Analysis</a>
+</li>
+<li>
+  <a href="race.html">This Year's Race</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">This Year’s Race</h1>
+
+</div>
+
+
+<p>Many publications that cover the NBA will write stories about the year’s MVP race, especially as the end of the regular season nears. On NBA.com, they have a tracker for this: the Kia MVP Ladder (named for the sponsor of the award). From their last tracker, I pulled the top ten candidates for this year’s award according to these analysts. See here: <a href="http://www.nba.com/kia-mvp-ladder-final-edition-2017-18-season" class="uri">http://www.nba.com/kia-mvp-ladder-final-edition-2017-18-season</a></p>
+<p>With this list, and with statistics for this most recent season gathered at www.basketball-reference.com, I ran my model to determine which of these candidates it suggests will be named MVP.</p>
+<div id="the-candidates" class="section level1">
+<h1>The Candidates</h1>
+<div id="james-harden-g-houston-rockets" class="section level3">
+<h3>1) James Harden, G, Houston Rockets</h3>
+<p>72 G, 29.8 PER, 30.4 PPG, 36.1 USG, 15.4 WS, 8.3 VORP</p>
+<p>Predicted Share of MVP Vote: .628871</p>
+</div>
+<div id="lebron-james-f-cleveland-cavaliers" class="section level3">
+<h3>2) LeBron James, F, Cleveland Cavaliers</h3>
+<p>82 G, 28.6 PER, 27.5 PPG, 31.6 USG, 14.0 WS, 8.9 VORP</p>
+<p>Predicted Share of MVP Vote: .332369</p>
+</div>
+<div id="anthony-davis-fc-new-orleans-pelicans" class="section level3">
+<h3>3) Anthony Davis, F/C, New Orleans Pelicans</h3>
+<p>75 G, 28.9 PER, 28.1 PPG, 30.0 USG, 13.7 WS, 4.9 VORP</p>
+<p>Predicted Share of MVP Vote: .192502</p>
+</div>
+<div id="damian-lillard-g-portland-trailblazers" class="section level3">
+<h3>4) Damian Lillard, G, Portland Trailblazers</h3>
+<p>73 G, 25.2 PER, 26.9 PPG, 30.6 USG, 12.6 WS, 5.9 VORP</p>
+<p>Predicted Share of MVP Vote: .312163</p>
+</div>
+<div id="kevin-durant-f-golden-state-warriors" class="section level3">
+<h3>5) Kevin Durant, F, Golden State Warriors</h3>
+<p>68 G, 26.0 PER, 26.4 PPG, 30.4 USG, 10.4 WS, 4.5 VORP</p>
+<p>Predicted Share of MVP Vote: .126466</p>
+</div>
+<div id="russell-westbrook-g-oklahoma-city-thunder" class="section level3">
+<h3>6) Russell Westbrook, G, Oklahoma City Thunder</h3>
+<p>80 G, 24.7 PER, 25.4 PPG, 34.1 USG, 10.1 WS, 7.5 VORP</p>
+<p>Predicted Share of MVP Vote: .262458</p>
+</div>
+<div id="demar-derozan-g-toronto-raptors" class="section level3">
+<h3>7) DeMar DeRozan, G, Toronto Raptors</h3>
+<p>80 G, 21.0 PER, 23.0 PPG, 29.6 USG, 9.6 WS, 2.6 VORP</p>
+<p>Predicted Share of MVP Vote: .070024</p>
+</div>
+<div id="stephen-curry-g-golden-state-warriors" class="section level3">
+<h3>8) Stephen Curry, G, Golden State Warriors</h3>
+<p>51 G, 28.2 PER, 26.4 PPG, 31.0 USG, 9.1 WS, 4.4 VORP</p>
+<p>Predicted Share of MVP Vote: .154646</p>
+</div>
+<div id="giannis-antetokounmpo-gf-milwaukee-bucks" class="section level3">
+<h3>9) Giannis Antetokounmpo, G/F, Milwaukee Bucks</h3>
+<p>75 G, 27.3 PER, 26.9 PPG, 31.2 USG, 11.9 WS, 5.4 VORP</p>
+<p>Predicted Share of MVP Vote: .180228</p>
+</div>
+<div id="joel-embiid-c-philadelphia-76ers" class="section level3">
+<h3>10) Joel Embiid, C, Philadelphia 76ers</h3>
+<p>63 G, 22.9 PER, 22.9 PPG, 33.4 USG, 6.2 WS, 2.2 VORP</p>
+<p>Predicted Share of MVP Vote: .06154</p>
+</div>
+</div>
+<div id="and-the-winner-isjames-harden" class="section level1">
+<h1>and the winner is…James Harden!</h1>
+<p>One bright spot of my model is that it predicts that James Harden will win the NBA MVP by a wide margin as is expected to be the case. However, one should be careful to draw too much from the specific output of the regression. Though Harden’s predicted vote-share far exceeds that of any other player in the top ten, it should not be expected that this will be Harden’s actual vote share. Most recent winners have had vote-shares in the high ’90’s. This leads me to believe that another metric might be more appropriate for what I am trying to accomplish. Some sort of MVP-likelihood metric. Nonetheless, it is refreshing to see my model return the consensus choice for this year’s award.</p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
