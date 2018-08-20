@@ -206,8 +206,8 @@ $(document).ready(function () {
 </div>
 
 
-<p>Many publications that cover the NBA will write stories about the year’s MVP race, especially as the end of the regular season nears. On NBA.com, they have a tracker for this: the Kia MVP Ladder (named for the sponsor of the award). From their last tracker, I pulled the top ten candidates for this year’s award according to these analysts. See here: <a href="http://www.nba.com/kia-mvp-ladder-final-edition-2017-18-season" class="uri">http://www.nba.com/kia-mvp-ladder-final-edition-2017-18-season</a></p>
-<p>With this list, and with statistics for this most recent season gathered at www.basketball-reference.com, I ran my model to determine which of these candidates it suggests will be named MVP.</p>
+<p>Many publications that cover the NBA write stories about the year’s MVP race, especially as the end of the regular season nears. On NBA.com, they have a tracker for this: the Kia MVP Ladder (named for the sponsor of the award). From their last tracker, I pulled the top ten candidates for this year’s award according to these analysts. See here: <a href="http://www.nba.com/kia-mvp-ladder-final-edition-2017-18-season" class="uri">http://www.nba.com/kia-mvp-ladder-final-edition-2017-18-season</a></p>
+<p>With this list, and with statistics from this most recent season gathered at <a href="http://www.basketball-reference.com" class="uri">http://www.basketball-reference.com</a>, I ran my model to determine which of these candidates will be named MVP.</p>
 <div id="the-candidates" class="section level1">
 <h1>The Candidates</h1>
 <div id="james-harden-g-houston-rockets" class="section level3">
@@ -263,7 +263,8 @@ $(document).ready(function () {
 </div>
 <div id="and-the-winner-isjames-harden" class="section level1">
 <h1>and the winner is…James Harden!</h1>
-<p>One bright spot of my model is that it predicts that James Harden will win the NBA MVP by a wide margin as is expected to be the case. However, one should be careful to draw too much from the specific output of the regression. Though Harden’s predicted vote-share far exceeds that of any other player in the top ten, it should not be expected that this will be Harden’s actual vote share. Most recent winners have had vote-shares in the high ’90’s. This leads me to believe that another metric might be more appropriate for what I am trying to accomplish. Some sort of MVP-likelihood metric. Nonetheless, it is refreshing to see my model return the consensus choice for this year’s award.</p>
+<p>One bright spot of my model is that it predicts that James Harden will win the NBA MVP by a wide margin, which is expected to be the case (edit on 8/19/18: James Harden did win the award). However, one should be careful to draw too much from the specific output of the regression. Though Harden’s predicted vote-share far exceeds that of any other player in the top ten, it should not be expected that this will be Harden’s actual vote share. Most recent winners have had vote-shares in the high ’90’s while his was only .63. This leads me to believe that the output itself is questionable and is only useful in comparison with players of the same subset (MVP candidates from the same year).</p>
+<p>To extend this project, I would build out a dataset of NBA player statistics as discussed in the Results and Analysis section. In addition to re-testing my original hypotheses and including two other variables, I wonder if a model generated from this master dataset would yield a more applicable output. If so, I might have more confidence in its broader utility.</p>
 </div>
 
 
