@@ -17,7 +17,7 @@ The share of possible vote-points for each player receiving an MVP vote is deter
 ```{r, echo=FALSE}
 mvp <- read.csv(file="c:/Users/andre/Documents/BDS_522/Final Project/mvp voting final.csv")
 mvp16<-mvp[Year=='2015-16',]
-barplot(Share, main="MVP Voting in 2016-16", names.arg=c("SC", "KL" , "LJ" ,"RW" , "KD", "CP" , "DG" , "DL" , "JH", "KL" ), ylab=" Vote Share ", xlab="Candidates",  
+barplot(mvp16$Share, main="MVP Voting in 2016-16", names.arg=c("SC","KL","LJ","RW","KD","CP", "DG" , "DL" , "JH", "KL"), ylab=" Vote Share", xlab="Candidates",  
 cex.names=0.5, col=c("darkred"),space=c(1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5))
 ```
 
