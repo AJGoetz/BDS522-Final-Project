@@ -1,0 +1,76 @@
+---
+title: "This Year's Race"
+---
+
+Many publications that cover the NBA write stories about the year's MVP race, especially as the end of the regular season nears. On NBA.com, they have a tracker for this: the Kia MVP Ladder (named for the sponsor of the award). From their last tracker, I pulled the top ten candidates for this year's award according to these analysts. See here: http://www.nba.com/kia-mvp-ladder-final-edition-2017-18-season
+
+With this list, and with statistics from this most recent season gathered at http://www.basketball-reference.com, I ran my model to determine which of these candidates will be named MVP.
+
+
+#The Candidates
+
+###1) James Harden, G, Houston Rockets
+ 72 G, 29.8 PER, 30.4 PPG, 36.1 USG, 15.4 WS, 8.3 VORP
+
+
+Predicted Share of MVP Vote: .628871
+
+###2) LeBron James, F, Cleveland Cavaliers
+ 82 G, 28.6 PER, 27.5 PPG, 31.6 USG, 14.0 WS, 8.9 VORP
+ 
+ 
+ Predicted Share of MVP Vote: .332369
+ 
+###3) Anthony Davis, F/C, New Orleans Pelicans
+ 75 G, 28.9 PER, 28.1 PPG, 30.0 USG, 13.7 WS, 4.9 VORP
+ 
+ 
+Predicted Share of MVP Vote: .192502
+
+###4) Damian Lillard, G, Portland Trailblazers
+ 73 G, 25.2 PER, 26.9 PPG, 30.6 USG, 12.6 WS, 5.9 VORP
+
+
+Predicted Share of MVP Vote: .312163
+ 
+###5) Kevin Durant, F, Golden State Warriors
+ 68 G, 26.0 PER, 26.4 PPG, 30.4 USG, 10.4 WS, 4.5 VORP
+ 
+ 
+ Predicted Share of MVP Vote: .126466
+ 
+###6) Russell Westbrook, G, Oklahoma City Thunder
+ 80 G, 24.7 PER, 25.4 PPG, 34.1 USG, 10.1 WS, 7.5 VORP
+ 
+ 
+ Predicted Share of MVP Vote: .262458
+ 
+###7) DeMar DeRozan, G, Toronto Raptors
+ 80 G, 21.0 PER, 23.0 PPG, 29.6 USG, 9.6 WS, 2.6 VORP
+ 
+ 
+ Predicted Share of MVP Vote: .070024
+ 
+###8) Stephen Curry, G, Golden State Warriors
+ 51 G, 28.2 PER, 26.4 PPG, 31.0 USG, 9.1 WS, 4.4 VORP
+ 
+ 
+ Predicted Share of MVP Vote: .154646
+ 
+###9) Giannis Antetokounmpo, G/F, Milwaukee Bucks
+ 75 G, 27.3 PER, 26.9 PPG, 31.2 USG, 11.9 WS, 5.4 VORP
+ 
+ 
+ Predicted Share of MVP Vote: .180228
+ 
+###10) Joel Embiid, C, Philadelphia 76ers
+ 63 G, 22.9 PER, 22.9 PPG, 33.4 USG, 6.2 WS, 2.2 VORP
+ 
+ 
+ Predicted Share of MVP Vote: .06154
+ 
+#and the winner is...James Harden!
+
+One bright spot of my model is that it predicts that James Harden will win the NBA MVP by a wide margin, which is expected to be the case (edit on 8/19/18: James Harden did win the award). However, one should be careful to draw too much from the specific output of the regression. Though Harden's predicted vote-share far exceeds that of any other player in the top ten, it should not be expected that this will be Harden's actual vote share. Most recent winners have had vote-shares in the high '90's while his was only .63. This leads me to believe that the output itself is questionable and is only useful in comparison with players of the same subset (MVP candidates from the same year).
+
+To extend this project, I would build out a dataset of NBA player statistics as discussed in the Results and Analysis section. In addition to re-testing my original hypotheses and including two other variables, I wonder if a model generated from this master dataset would yield a more applicable output. If so, I might have more confidence in its broader utility. 

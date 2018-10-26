@@ -1,0 +1,55 @@
+---
+title: "Model and Data"
+---
+
+#Data
+
+Data for this project came from http://www.basketball-reference.com, a great resource for anyone interested in working with NBA data. Specifically, I pulled information from two tables: Season Advanced Stats and MVP Voting. For each of the past ten completed seasons (2007-08 through 2016-17), I recorded information on the same set of variables for every player that received an MVP vote as reported by the MVP Voting table.
+
+
+#Variables
+
+###Dependent Variable
+
+Share of Possible Vote-Points (Share): Voters for the MVP submit a ballot of five players in ranked order. Each player receiving votes will receive X number of first place votes, X number of second place votes, and so on. The ranks are weighted such that first place votes yield more vote-points than second place votes, and so on. Thus, the limit on vote-points that can be earned in any given year is reached only if one player is unanimously voted as the top candidate by all the voters (as was the case with Stephen Curry in 2016). 
+The share of possible vote-points for each player receiving an MVP vote is determined by dividing the amount of vote-points they receive by this maximum. Since the number of voters and, therefore, the number of possible vote-points changes each year, I used the share of possible votes in order to pull data across several years. As an example, here's what the vote share distribution looked like for the ten vote recipients in the 2015-16 season.
+
+```{r, echo=FALSE}
+mvp <- read.csv(file="c:/Users/andre/Documents/BDS_522/Final Project/mvp voting final.csv")
+mvp16<-mvp[Year=='2015-16',]
+barplot(mvp16$Share, main="MVP Voting in 2016-16", names.arg=c("SC","KL","LJ","RW","KD","CP", "DG" , "DL" , "JH", "KL"), ylab=" Vote Share", xlab="Candidates",  
+cex.names=0.5, col=c("darkred"),space=c(1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5))
+```
+
+###Independent Variables
+
+Games Played (G): A simple counting statistic used to track the amount of games played by a player in a given year. For the players in our sample who are all very good, missed games are due to either injury or (sometimes) rest. It is included because more weight is generally given to players who play the bulk of the season. The candidacy of players who sit out for long stretches due to injury is generally discounted. The thought goes like this: "Player X's statistics are great and they performed well when healthy, but they missed a third of the season while Player Y performed just as well and did so in more games." This year, candidates like Stephen Curry and Joel Embiid, who have each put together a strong case based on performance statistics, are not taken as seriously due to the substantial number of games missed by both.
+
+
+Player Efficiency Rating (PER): Developed by John Hollinger, a former NBA analyst at ESPN and current VP of Basketball Operations for the Memphis Grizzlies, it is meant to encompass all of a player's contributions while on the floor. It is standardized to an average of 15, which means that a PER above 15 indicates that a player is performing better than league average. It is also adjusted for pace of play so that it is more conducive for year-to-year comparisons of player performance. As the league has entered the modern pace-and-space era, there are more possessions (and, thus, more of an opportunity to accumulate performance statistics) than in previous eras.
+
+
+Points Per Game (PTS): Another simple counting statistic. It tracks the average number of points scored by a player in each game. The MVP is typically viewed as an offensive award, which means that offensive prowess is generally favored over defensive impact. Part of this is due to the difficulty in measuring defensive impact and part of this is also likely explained by the nature of the game. Unlike in other sports like football or hockey in which an opposing player can physically prevent you from scoring, basketball does not allow for that kind of contact. In other words, and as ESPN NBA Analyst Mark Jackson says, " Good D (defense), better O (offense)". Given the nature of the game, good offense should beat good defense so maybe the empahsis on offensive skill when evaluating a player's value is appropriate. Since scoring the basketball is the most visible evidence of a player's offensive skill, I would expect voters to be sensitive to this metric.
+
+
+Usage Percentage (USG): An estimate of the team's plays used by a player while he was on the floor. Most MVP candidates are the focal point of their team's offense and, as such, their usage percentages tend to be quite high. This is becoming even more pronounced as modern offensives have drifted away from the traditional model of a point guard-led offense. "Creator", "Point Forward", "Combo Guard"--call them what you want but many teams have taken to the strategy of putting the ball in their best player's hands and running the offense through him, regardless of his nominal position. As such, a high usage rate should be expected for serious MVP candidates. 
+
+
+Win Shares (WS): A metric designed to estimate the number of wins contributed by a player. In essence, it attempts to capture the individual's contribution to the team's success. Orginally developed by Bill James for baseball, it has been adapated and applied to basketball. This metric is included to determine how impactful the "best player on the best team" heuristic is, and, conversely, to guage just how forgiving voters are of the good players on bad teams. At the end of the day, each team's goal is to win so the MVP should be someone who helps a team do that. 
+
+
+Value Over Replacement Player (VORP): As defined by basketball-reference it is, "a box score estimate of the points per 100 TEAM possessions that a player contributed above a replacement-level (-2.0) player, translated to an average team and prorated to an 82-game season." It is calculated from another statistic, Box Score Plus/Minus, in order to measure a player's overall contrbution to the team relative to what a theoretical "replacement level" player would produce. Each serious MVP candidate should be far from average.
+
+
+#Hypotheses
+
+I selected each of these variables because I felt that they all influenced a player's MVP chances. More specifically, I believe that each of these variables positively affects a player's MVP chances. Therefore, I predict that all of the independent variables will have a statistically significant and positive effect on the dependent variable. Visually, the positive relationship between these variables can be illustrated using the 'plot' function. As an example, let's look at the relationships between PER and Share as well as PTS and Share.
+
+```{r, echo=FALSE}
+ plot(mvp$PTS,mvp$Share, xlab="Points per Game", ylab="Vote Share")
+plot(mvp$PER, mvp$Share, xlab= "Player Efficiency Rating", ylab="Vote Share")
+```
+
+In both cases, there does appear to be a positive relationship between the two variables. In neither case, however, did the relationship appear to be very strong. Nevertheless, my hypotheses will remain as they are and I will run the model and perform significance tests to evaluate them.
+
+My selection of the variables in this model was informed by years of NBA fanhood. I read articles, watch games, and listen to podcasts about the league and I included the variables that I felt best captured a lot of the talking points analysts tend to cover in discussions about league MVP.

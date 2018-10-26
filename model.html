@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Model and Data</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">NBA MVP Voting</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Overview</a>
+</li>
+<li>
+  <a href="model.html">Model and Data</a>
+</li>
+<li>
+  <a href="results.html">Results and Analysis</a>
+</li>
+<li>
+  <a href="race.html">This Year's Race</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Model and Data</h1>
+
+</div>
+
+
+<div id="data" class="section level1">
+<h1>Data</h1>
+<p>Data for this project came from <a href="http://www.basketball-reference.com" class="uri">http://www.basketball-reference.com</a>, a great resource for anyone interested in working with NBA data. Specifically, I pulled information from two tables: Season Advanced Stats and MVP Voting. For each of the past ten completed seasons (2007-08 through 2016-17), I recorded information on the same set of variables for every player that received an MVP vote as reported by the MVP Voting table.</p>
+</div>
+<div id="variables" class="section level1">
+<h1>Variables</h1>
+<div id="dependent-variable" class="section level3">
+<h3>Dependent Variable</h3>
+<p>Share of Possible Vote-Points (Share): Voters for the MVP submit a ballot of five players in ranked order. Each player receiving votes will receive X number of first place votes, X number of second place votes, and so on. The ranks are weighted such that first place votes yield more vote-points than second place votes, and so on. Thus, the limit on vote-points that can be earned in any given year is reached only if one player is unanimously voted as the top candidate by all the voters (as was the case with Stephen Curry in 2016). The share of possible vote-points for each player receiving an MVP vote is determined by dividing the amount of vote-points they receive by this maximum. Since the number of voters and, therefore, the number of possible vote-points changes each year, I used the share of possible votes in order to pull data across several years. As an example, here’s what the vote share distribution looked like for the ten vote recipients in the 2015-16 season.</p>
+<p><img src="model_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+</div>
+<div id="independent-variables" class="section level3">
+<h3>Independent Variables</h3>
+<p>Games Played (G): A simple counting statistic used to track the amount of games played by a player in a given year. For the players in our sample who are all very good, missed games are due to either injury or (sometimes) rest. It is included because more weight is generally given to players who play the bulk of the season. The candidacy of players who sit out for long stretches due to injury is generally discounted. The thought goes like this: “Player X’s statistics are great and they performed well when healthy, but they missed a third of the season while Player Y performed just as well and did so in more games.” This year, candidates like Stephen Curry and Joel Embiid, who have each put together a strong case based on performance statistics, are not taken as seriously due to the substantial number of games missed by both.</p>
+<p>Player Efficiency Rating (PER): Developed by John Hollinger, a former NBA analyst at ESPN and current VP of Basketball Operations for the Memphis Grizzlies, it is meant to encompass all of a player’s contributions while on the floor. It is standardized to an average of 15, which means that a PER above 15 indicates that a player is performing better than league average. It is also adjusted for pace of play so that it is more conducive for year-to-year comparisons of player performance. As the league has entered the modern pace-and-space era, there are more possessions (and, thus, more of an opportunity to accumulate performance statistics) than in previous eras.</p>
+<p>Points Per Game (PTS): Another simple counting statistic. It tracks the average number of points scored by a player in each game. The MVP is typically viewed as an offensive award, which means that offensive prowess is generally favored over defensive impact. Part of this is due to the difficulty in measuring defensive impact and part of this is also likely explained by the nature of the game. Unlike in other sports like football or hockey in which an opposing player can physically prevent you from scoring, basketball does not allow for that kind of contact. In other words, and as ESPN NBA Analyst Mark Jackson says, &quot; Good D (defense), better O (offense)“. Given the nature of the game, good offense should beat good defense so maybe the empahsis on offensive skill when evaluating a player’s value is appropriate. Since scoring the basketball is the most visible evidence of a player’s offensive skill, I would expect voters to be sensitive to this metric.</p>
+<p>Usage Percentage (USG): An estimate of the team’s plays used by a player while he was on the floor. Most MVP candidates are the focal point of their team’s offense and, as such, their usage percentages tend to be quite high. This is becoming even more pronounced as modern offensives have drifted away from the traditional model of a point guard-led offense. “Creator”, “Point Forward”, “Combo Guard”–call them what you want but many teams have taken to the strategy of putting the ball in their best player’s hands and running the offense through him, regardless of his nominal position. As such, a high usage rate should be expected for serious MVP candidates.</p>
+<p>Win Shares (WS): A metric designed to estimate the number of wins contributed by a player. In essence, it attempts to capture the individual’s contribution to the team’s success. Orginally developed by Bill James for baseball, it has been adapated and applied to basketball. This metric is included to determine how impactful the “best player on the best team” heuristic is, and, conversely, to guage just how forgiving voters are of the good players on bad teams. At the end of the day, each team’s goal is to win so the MVP should be someone who helps a team do that.</p>
+<p>Value Over Replacement Player (VORP): As defined by basketball-reference it is, “a box score estimate of the points per 100 TEAM possessions that a player contributed above a replacement-level (-2.0) player, translated to an average team and prorated to an 82-game season.” It is calculated from another statistic, Box Score Plus/Minus, in order to measure a player’s overall contrbution to the team relative to what a theoretical “replacement level” player would produce. Each serious MVP candidate should be far from average.</p>
+</div>
+</div>
+<div id="hypotheses" class="section level1">
+<h1>Hypotheses</h1>
+<p>I selected each of these variables because I felt that they all influenced a player’s MVP chances. More specifically, I believe that each of these variables positively affects a player’s MVP chances. Therefore, I predict that all of the independent variables will have a statistically significant and positive effect on the dependent variable. Visually, the positive relationship between these variables can be illustrated using the ‘plot’ function. As an example, let’s look at the relationships between PER and Share as well as PTS and Share.</p>
+<p><img src="model_files/figure-html/unnamed-chunk-2-1.png" width="672" /><img src="model_files/figure-html/unnamed-chunk-2-2.png" width="672" /></p>
+<p>In both cases, there does appear to be a positive relationship between the two variables. In neither case, however, did the relationship appear to be very strong. Nevertheless, my hypotheses will remain as they are and I will run the model and perform significance tests to evaluate them.</p>
+<p>My selection of the variables in this model was informed by years of NBA fanhood. I read articles, watch games, and listen to podcasts about the league and I included the variables that I felt best captured a lot of the talking points analysts tend to cover in discussions about league MVP.</p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

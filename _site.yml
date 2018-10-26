@@ -1,0 +1,13 @@
+name: "my-website"
+output_dir: "."
+navbar:
+  title: "NBA MVP Voting"
+  left:
+    - text: "Overview"
+      href: index.html
+    - text: "Model and Data"
+      href: model.html
+    - text: "Results and Analysis"
+      href: results.html
+    - text: "This Year's Race"
+      href: race.html
