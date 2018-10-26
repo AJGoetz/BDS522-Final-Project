@@ -10,6 +10,11 @@ model1
 
 
 ###Significance Tests of Coefficients
+
+```{r, echo=FALSE}
+library("sandwich")
+library("lmtest")
+```
 ```{r, echo=FALSE}
 coeftest(model1, vcov = sandwich)
 ```

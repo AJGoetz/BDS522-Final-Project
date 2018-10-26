@@ -12,7 +12,14 @@ Data for this project came from http://www.basketball-reference.com, a great res
 ###Dependent Variable
 
 Share of Possible Vote-Points (Share): Voters for the MVP submit a ballot of five players in ranked order. Each player receiving votes will receive X number of first place votes, X number of second place votes, and so on. The ranks are weighted such that first place votes yield more vote-points than second place votes, and so on. Thus, the limit on vote-points that can be earned in any given year is reached only if one player is unanimously voted as the top candidate by all the voters (as was the case with Stephen Curry in 2016). 
-The share of possible vote-points for each player receiving an MVP vote is determined by dividing the amount of vote-points they receive by this maximum. Since the number of voters and, therefore, the number of possible vote-points changes each year, I used the share of possible votes in order to pull data across several years.
+The share of possible vote-points for each player receiving an MVP vote is determined by dividing the amount of vote-points they receive by this maximum. Since the number of voters and, therefore, the number of possible vote-points changes each year, I used the share of possible votes in order to pull data across several years. As an example, here's what the vote share distribution looked like for the ten vote recipients in the 2015-16 season.
+
+```{r, echo=FALSE}
+mvp <- read.csv(file="c:/Users/andre/Documents/BDS_522/Final Project/mvp voting final.csv")
+mvp16<-mvp[Year=='2015-16',]
+barplot(Share, main="MVP Voting in 2016-16", names.arg=c("SC", "KL" , "LJ" ,"RW" , "KD", "CP" , "DG" , "DL" , "JH", "KL" ), ylab=" Vote Share ", xlab="Candidates",  
+cex.names=0.5, col=c("darkred"),space=c(1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5))
+```
 
 ###Independent Variables
 
@@ -36,6 +43,13 @@ Value Over Replacement Player (VORP): As defined by basketball-reference it is, 
 
 #Hypotheses
 
-I selected each of these variables because I felt that they all influenced a player's MVP chances. More specifically, I believe that each of these variables positively affects a player's MVP chances. Therefore, I predict that all of the independent variables will have a statistically significant and positive effect on the dependent variable.
+I selected each of these variables because I felt that they all influenced a player's MVP chances. More specifically, I believe that each of these variables positively affects a player's MVP chances. Therefore, I predict that all of the independent variables will have a statistically significant and positive effect on the dependent variable. Visually, the positive relationship between these variables can be illustrated using the 'plot' function. As an example, let's look at the relationships between PER and Share as well as PTS and Share.
+
+```{r, echo=FALSE}
+ plot(mvp$PTS,mvp$Share, xlab="Points per Game", ylab="Vote Share")
+plot(mvp$PER, mvp$Share, xlab= "Player Efficiency Rating", ylab="Vote Share")
+```
+
+In both cases, there does appear to be a positive relationship between the two variables. In neither case, however, did the relationship appear to be very strong. Nevertheless, my hypotheses will remain as they are and I will run the model and perform significance tests to evaluate them.
 
 My selection of the variables in this model was informed by years of NBA fanhood. I read articles, watch games, and listen to podcasts about the league and I included the variables that I felt best captured a lot of the talking points analysts tend to cover in discussions about league MVP.
